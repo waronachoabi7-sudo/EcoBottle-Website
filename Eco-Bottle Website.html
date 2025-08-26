@@ -1,0 +1,594 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <title>Navigation bar</title>
+
+<style>
+    /* Reset margin and padding for all elements */
+*{
+    margin: 0;
+    padding: 0;
+}
+
+
+/* Body styling */
+body{
+    min-height: 100vh;
+    background-image: url(Pictures/gray-white-water-bottle.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    text-align: center; /* Center-align everything */
+}
+
+/* Sticky Navigation Bar */
+.sticky{
+    position: sticky;
+    top: 0;
+}
+
+/* Navigation bar styles */
+nav{
+   
+    background-color: #e5d3b3;
+    box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Unordered list inside nav */
+nav ul{
+    
+    width: 100%;
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* List items inside nav */
+nav li{
+    
+    height: 50px;
+    padding: 0 30px;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    color: white;
+}
+
+/* Navigation links */
+nav a{
+   
+    padding: 10px 20px;
+    text-decoration: none;
+    background-color: #C6AB80;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+    color: white;
+}
+
+/* Hover effect for navigation links */
+nav a:hover{
+    
+    background-color: #F2F2F0;
+    color: black;
+    }
+
+/* Button styling */
+button{
+    display: inline-block;
+    border: none;
+    background-color: #C6AB80;
+    color: black;
+    padding: .10px 20px;
+    border-radius: 100px;
+    text-decoration: none;
+    font-family: Helvetica, sans-serif;
+    font-size: 1.2rem;
+    font-weight: bold;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+}
+
+/* Button hover effect */
+button:hover{
+    transform: translateY(-8px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+/* Headings */
+h1{
+    font-size: 4rem;
+}
+
+ h2{
+    margin-top: 60px;
+}
+
+/* Buy Now Button specific spacing */
+div button{
+    padding: 26px 48px;
+    margin-top: 95px;
+}
+
+div h2{
+    text-align: center;
+}
+
+/* Price Card Container */
+.price-card {
+    background-color: #C6AB80; /* Match the soft pastel theme */
+    color: white;
+    max-width: 200px;
+    margin: 10px auto; /* Center it horizontally */
+    padding: 20px;
+    border-radius: 15px;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Soft shadow */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Heading inside price card */
+.price-card h2 {
+    font-size: 1.5rem;
+    margin-top: 4px;
+}
+
+/* Price amount */
+#priceDisplay {
+    font-size: 1.5rem;
+    font-weight: bold;
+    background-color: #e5d3b3; 
+    color: black;
+    padding: 5px 10px;
+    border-radius: 12px;
+    display: inline-block;
+}
+
+/* Hover effect for fun */
+.price-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); 
+}
+
+/* Wrapper to hold the three info boxes */
+.content-section {
+    display: inline-flexbox;
+    justify-content: center;
+    gap: 100px;
+    flex-wrap: wrap-reverse; 
+    margin: 80px auto;
+    max-width: 345px;
+    
+}
+
+/* Individual info box styles */
+.info-box {
+    background-color: #C6AB80; 
+    padding: 30px;
+    border-radius: 15px;
+    width: 300px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    text-align: center;
+}
+
+/* Small hover effect to make it fun */
+.info-box:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+/* Headings inside the boxes */
+.info-box h2 {
+    margin-bottom: 20px;
+    color: white;
+}
+
+/* Paragraphs and list inside the boxes */
+.info-box p, .info-box ul {
+    color: white;
+    font-size: 1rem;
+}
+
+/* List styling inside features */
+.info-box ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.info-box ul li {
+    margin-bottom: 10px;
+}
+
+/* Contact Us Form Styling */
+form{
+    background-color: #C6AB80; /* Light background for form */
+    padding: 30px; /* Inner padding */
+    margin: 40px auto; /* Top-bottom margin and auto-center horizontally */
+    max-width: 500px; /* Keep form narrow and clean */
+    border-radius: 15px; /* Rounded corners */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Light shadow to lift form */
+}
+
+/* Price Display styling */
+.price-display{
+    margin-top: 0px;
+    font-size: 20px;
+    font-weight: bold;
+    color: black;
+}
+
+/* Modal Styling */
+.modal {
+    display: none; /* Hide modal by default */
+    position: fixed;
+    z-index: 1000; /* High z-index to appear on top */
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.6); /* Darker transparent background */
+}
+
+/* Modal Content Box */
+.modal-content {
+    background: linear-gradient(135deg, #FDF6EC, #E0C3FC); /* Soft pastel gradient */
+    background-color: #C6AB80;
+    margin: 10% auto;
+    padding: 30px;
+    border-radius: 25px;
+    width: 85%;
+    max-width: 400px;
+    box-shadow: 0px 5px 20px rgba(0,0,0,0.3);
+    animation: popup 0.5s ease forwards; /* Small fun animation */
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Animation for the modal pop up */
+@keyframes popup {
+    0% {
+        transform: scale(0.7);
+        opacity: 0;
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+/* Close Button */
+#closeModal {
+    float: right;
+    font-size: 28px;
+    cursor: pointer;
+    font-weight: bold;
+    color: #555;
+}
+
+#closeModal:hover {
+    color: #C6AB80; /* Match your nav color */
+}
+
+/* Form inside modal */
+#colorForm {
+    margin-top: 20px;
+    text-align: left;
+}
+
+/* Label styling for radio and checkbox */
+#colorForm label {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+/* Small colour circles next to colour names */
+.color-dot {
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    display: inline-block;
+    margin-right: 8px;
+    border: 2px solid #333;
+}
+
+/* Confirm button */
+#confirmSelection {
+    display: block;
+    width: 100%;
+    margin-top: 20px;
+    background-color: #C6AB80;
+    color: white;
+    border: none;
+    padding: 12px;
+    font-size: 1.1rem;
+    border-radius: 15px;
+    transition: background-color 0.3s ease, transform 0.2s;
+}
+
+#confirmSelection:hover {
+    background-color: #F2F2F0;
+    color: black;
+    transform: scale(1.05);
+}
+
+/* Show Modal Class */
+.modal.show {
+    display: block;
+}
+
+
+/* Style for input fields and textarea */
+form input[type="text"],
+form input[type="email"],
+form textarea {
+    width: 100%; /* Full width inside container */
+    padding: 12px 15px; /* Comfortable padding inside fields */
+    margin: 10px 0; /* Space between fields */
+    border: 2px solid #ccc; /* Light grey border */
+    border-radius: 8px; /* Slightly rounded corners */
+    font-size: 1rem; /* Standard readable font size */
+    box-sizing: border-box; /* Fix padding overflow */
+}
+
+/* Make textarea taller */
+form textarea {
+    height: 100px; /* Normal height for message */
+    resize: vertical; /* The User can make it bigger if needed */
+}
+
+/* Checkbox styling */
+form input[type="checkbox"] {
+    transform: scale(1.2); /* This makes the checkbox bigger */
+    margin-right: 10px; /* Creates Space next to label */
+}
+
+/* Submit button styling */
+form button[type="submit"] {
+    width: 50%;
+    padding: 12px;
+    margin-top: 15px;
+    background-color: #C6AB80;
+    border: none;
+    color: white;
+    font-weight: bold;
+    font-size: 1rem;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+/* Hover effect for submit button */
+form button[type="submit"]:hover {
+    background-color: #F2F2F0;
+    color: black;
+}
+
+
+</style>
+
+</head>
+    <body>
+        <!-- Sticky Navigation Bar -->
+        <header class="mainmenu sticky">
+            <nav>
+                <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#About">About</a></li>
+                <li><a href="#Features" >Features</a></li>
+                <li><a href="#Pricing" >Pricing</a></li>
+                <li><a href="#Contact Us" >Contact us</a></li>
+                </ul>
+                
+            </nav>
+        </header>
+
+        <!-- Main Section -->
+        <main>
+
+        <div>
+            <h1>EcoSmart Water Bottle</h1>
+        </div>
+
+        <div>
+            <h2>EcoSmart Water Bottle</h2>
+            <!-- Buy Now button that will open the modal -->
+            <button id="buyNowBtn">BUY NOW</button>
+        </div>
+
+        <!-- Price Display Section -->
+        <div class="price-card">
+            <h2>Total price</h2>
+            <div id="priceDisplay">R750</div>
+        </div>
+
+        <!-- Content section that holds all three info boxes side by side -->
+    <div class="content-section">
+        
+        <!-- About the Bottle Info Box -->
+        <div class="info-box" id="About">
+            <h2>About the EcoSmart Bottle</h2>
+            <p>The EcoSmart bottle is crafted with eco-friendly materials, designed to keep your drinks cold for 24 hours or hot for 12 hours.</p>
+        </div>
+
+        <!-- Features Info Box -->
+        <div id="Features" class="info-box">
+            <h2>Features</h2>
+            <ul>
+                <li>✅ 100% BPA-Free</li>
+                <li>✅ Custom Engraving Available</li>
+                <li>✅ 5 Stylish Colours</li>
+                <li>✅ Leak-Proof Design</li>
+            </ul>
+        </div>
+
+        <!-- Pricing Info Box -->
+        <div id="Pricing" class="info-box">
+            <h2>Pricing</h2>
+            <p>Standard Colours: R750<br>Premium Colours: +R93,36<br>Custom Engraving: +R100</p>
+        </div>
+
+    </div>
+
+        <!-- Modal for selecting product options -->
+        <div id="modal" class="modal hidden">
+            <div class="modal-content">
+                <span id="closeModal">&times;</span> <!-- Close button -->
+                <h2>Select Your Bottle Colour</h2>
+                
+                <!-- Color options -->
+        <form id="colorForm">
+            <!-- Standard Colors -->
+            <h3>Standard Colours (No extra cost)</h3>
+            <label>
+                <input type="radio" name="color" value="white" checked> White
+                <span class="color-dot" style="background-color: white;"></span>
+            </label><br>
+            <label>
+                <input type="radio" name="color" value="black"> Black
+                <span class="color-dot" style="background-color: black;"></span>
+            </label><br>
+
+            <!-- Premium Colors -->
+            <h3>Premium Colours (+R93,36)</h3>
+            <label>
+                <input type="radio" name="color" value="pastelgreen"> Pastel Green
+                <span class="color-dot" style="background-color: #77DD77;"></span>
+            </label><br>
+            <label>
+                <input type="radio" name="color" value="pastelgrey"> Pastel Grey
+                <span class="color-dot" style="background-color: #D3D3D3;"></span>
+            </label><br>
+            <label>
+                <input type="radio" name="color" value="pastelpink"> Pastel Pink
+                <span class="color-dot" style="background-color: #FFD1DC;"></span>
+            </label><br>
+
+            <!-- Extras -->
+            <h3>Extras</h3>
+            <label><input type="checkbox" id="engraving"> Custom Engraving (+R186,72)</label>
+
+            <!-- Confirm selection -->
+            <button type="button" id="confirmSelection">Confirm</button>
+        </form>
+
+    </div>
+</div>
+
+<footer id="Contact Us" class="footer-section">    
+            <!-- Contact Us Form -->
+            <form class="box">
+                <div class="contact-container fade-in"></div>
+                <div class="wrapper">
+                    <h2>Contact Us</h2>
+
+                <div>
+                   <input type="text" name="first Name" placeholder="Firstname" required >
+                </div>
+                <div>
+                    <input type="Email" name="Email" placeholder="Email" required>
+                </div>
+                <div>
+                    <textarea type="text" name="Message" placeholder="Message" required></textarea>
+                </div>
+
+                 <!-- Terms and Conditions Checkbox -->
+                 <div>
+                    <input type="checkbox" id="terms" required> I agree to Terms and Conditions
+                </div>
+
+                <!-- Submit Button -->
+                <div>
+                    <button type="submit">Submit</button>
+                </div>
+            </div>
+            </form>
+</footer>
+        </main>
+
+        <!-- Link to my JavaScript file -->
+    <script>
+        
+// Modal functionality
+
+// Get elements by their IDs
+const buyNowBtn = document.getElementById("buyNowBtn"); // Buy Now button
+const modal = document.getElementById("modal"); // Modal container
+const closeModal = document.getElementById("closeModal"); // Close (X) button
+const confirmSelection = document.getElementById("confirmSelection"); // Confirm button
+
+// Open the modal when the Buy Now button is clicked
+buyNowBtn.addEventListener("click", () => {
+    modal.classList.add("show"); // Add 'show' class to display modal
+});
+
+// Close the modal when the close (X) button is clicked
+closeModal.addEventListener("click", () => {
+    modal.classList.remove("show"); // Remove 'show' class to hide modal
+});
+
+
+// Price Calculation functionality
+
+// Base price of the water bottle
+let basePrice = 750;
+
+// Function to update the price based on selections
+function updatePrice() {
+    let totalPrice = basePrice;
+
+    // Find which colour is selected
+    const selectedColor = document.querySelector('input[name="color"]:checked').value;
+
+    // Check if selected color is a premium colour
+    const premiumColors = ["pastelgreen", "pastelgrey", "pastelpink"];
+    if (premiumColors.includes(selectedColor)) {
+        totalPrice += 93,36; // Premium colours costs more
+    }
+
+    // Check if engraving option is selected
+    const engraving = document.getElementById("engraving");
+    if (engraving.checked) {
+        totalPrice += 186,72; // Engraving costs extra
+    }
+
+    // Update the price display on the page
+    document.getElementById("priceDisplay").textContent = "Total price: R" + totalPrice;
+}
+
+// When the user confirms selection inside the modal
+confirmSelection.addEventListener("click", () => {
+    updatePrice(); // Call the update function
+    modal.classList.remove("show"); // Close the modal
+});
+
+
+
+// Contact Form Validation
+
+// Select the form and the terms checkbox
+const form = document.querySelector('form'); // Selects the first form on the page
+const terms = document.getElementById('terms'); // Gets the terms checkbox
+
+// Listen for when the form is submitted
+form.addEventListener('submit', function (e) {
+    // If checkbox is not checked, prevent the form from submitting
+    if (!terms.checked) {
+        e.preventDefault(); // Stop the form from submitting
+        alert('Please agree to the Terms and Conditions before submitting.'); // Show alert message
+    }
+});
+
+function toggleMenu() {
+      const nav = document.getElementById('mainmenu sticky');
+      nav.classList.toggle('active');
+    }
+    </script>
+    </body>
+
+</html>   
